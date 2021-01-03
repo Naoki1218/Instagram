@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update ]
+  # before_action :ensure_current_user, only: [:edit, :update]
+  # before_action :autheniticate_user, only: [:edit, :update]
+
+
   def new
     @user = User.new
   end
@@ -18,6 +23,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update
@@ -30,8 +38,20 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+      @user = User.find(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :password,
       :password_confirmation, :image, :image_cache)
-    end
   end
+
+  # def ensure_current_user
+  #   if @current_user.id == params[:id].to_i
+  #     flash[:notice]="権限がありません"
+  #     redirect_to photos_path
+  #   end
+  # end
+end

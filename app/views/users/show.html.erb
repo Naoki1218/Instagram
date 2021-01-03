@@ -1,2 +1,11 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+
+<% if @user.image? %>
+  <%= image_tag @user.image.url %>
+<% end %>
+
+<div>
+<%= link_to 'Photoページへ', photos_path %>
+<%= link_to "Profileを編集する", edit_user_path(@user.id) %>
+</div>

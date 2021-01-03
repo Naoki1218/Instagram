@@ -1,0 +1,31 @@
+<%= form_with(model: @photo, local: true, url:confirm_photos_path) do |form| %>
+<% if @photo.errors.any? %>
+<div id="error_explanation">
+  <h2><%= @photo.errors.count %>件のエラーがあります。</h2>
+  <ul>
+    <% @photo.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<center>
+<%= link_to "ブログ一覧画面にもどる", photos_path %>
+
+  <div class="field">
+  <%= form.label :image %>
+  <%= image_tag(@photo.image.url) if @photo.image && @photo.image.url %>
+  <%= form.file_field :image %>
+  <%= form.hidden_field :image_cache %>
+  </div>
+
+  <div class="photo_content">
+  <%= form.text_field :content %>
+  </div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+
+<% end %>
