@@ -54,26 +54,26 @@ class PhotosController < ApplicationController
     redirect_to photos_path, notice: '削除完了しました！'
   end
 
-   private
+  private
+  
+  def set_photo
+    @photo = Photo.find(params[:id])
+  end
 
-    def set_photo
-      @photo = Photo.find(params[:id])
-    end
+  def photo_params
+    params.require(:photo).permit(:image, :content, :image_cache)
+  end
 
-    def photo_params
-      params.require(:photo).permit(:image, :content, :image_cache)
+  def must_login
+    unless logged_in?
+      redirect_to new_user_path
     end
+  end
 
-    def must_login
-      unless logged_in?
-        redirect_to new_user_path
-      end
+  def ensure_correct_user
+    @photo = Photo.find(params[:id])
+    unless @photo.user == current_user
+      redirect_to photos_path
     end
-
-    def ensure_correct_user
-      @photo = Photo.find(params[:id])
-        unless @photo.user == current_user
-        redirect_to photos_path
-        end
-    end
+  end
 end

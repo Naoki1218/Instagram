@@ -40,18 +40,11 @@ class UsersController < ApplicationController
   private
 
   def set_user
-      @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
       :password_confirmation, :image, :image_cache)
+    end
   end
-
-  # def ensure_current_user
-  #   if @current_user.id == params[:id].to_i
-  #     flash[:notice]="権限がありません"
-  #     redirect_to photos_path
-  #   end
-  # end
-end
