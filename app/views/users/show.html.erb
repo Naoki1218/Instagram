@@ -2,11 +2,11 @@
 <p>メールアドレス: <%= @user.email %></p>
 
 <% if @user.image? %>
-  <%= image_tag @user.image.url %>
+<%= image_tag @user.image.url %>
 <% end %>
 
 <div>
-<%= link_to 'Photoページへ', photos_path %>
-<%= link_to "Profileを編集する", edit_user_path(@user.id) %>
-<%= link_to "favoriteページへ", favorites_user_path(@user.id) %>
+  <%= link_to 'Photoページへ', photos_path %>
+  <%= link_to "Profileを編集する", edit_user_path(@user.id) %>
+  <%= link_to "favoriteページへ", favorites_user_path(@user.id) %>
 </div>

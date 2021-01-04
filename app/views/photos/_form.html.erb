@@ -11,21 +11,21 @@
 <% end %>
 
 <center>
-<%= link_to "ブログ一覧画面にもどる", photos_path %>
+  <%= link_to "ブログ一覧画面にもどる", photos_path %>
 
   <div class="field">
-  <%= form.label :image %>
-  <%= image_tag(@photo.image.url) if @photo.image && @photo.image.url %>
-  <%= form.file_field :image %>
-  <%= form.hidden_field :image_cache %>
+    <%= form.label :image %>
+    <%= image_tag(@photo.image.url) if @photo.image && @photo.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
   </div>
 
   <div class="photo_content">
-  <%= form.text_field :content %>
+    <%= form.text_field :content %>
   </div>
 
-<div class="actions">
-  <%= form.submit %>
-</div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 
-<% end %>
+  <% end %>
