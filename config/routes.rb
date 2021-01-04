@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users
   resources :favorites, only: [:create, :destroy]
-  resources :photos do
+  resources :photos, only: [:index,:new,:create,:edit,:update,:destroy] do
     collection do
       post :confirm
+    end
+  end
+  resources :users, only: [:new, :create, :show, :edit, :update] do
+    member do
+      get :favorites
     end
   end
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

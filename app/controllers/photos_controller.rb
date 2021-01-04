@@ -9,9 +9,6 @@ class PhotosController < ApplicationController
 
   def show
     @favorite = current_user.favorites.find_by(photo_id: @photo.id)
-    # @comment = Comment.new
-    # @comment.photo_id = params[:photo_id]
-    # @comments = @photo.comments
   end
 
   def new
@@ -23,6 +20,7 @@ class PhotosController < ApplicationController
   end
 
   def edit
+    @photo = Photo.find(params[:id])
   end
 
   def confirm
@@ -55,7 +53,7 @@ class PhotosController < ApplicationController
   end
 
   private
-  
+
   def set_photo
     @photo = Photo.find(params[:id])
   end
@@ -69,7 +67,7 @@ class PhotosController < ApplicationController
       redirect_to new_user_path
     end
   end
-
+  # 他者の投稿を編集できないように
   def ensure_correct_user
     @photo = Photo.find(params[:id])
     unless @photo.user == current_user

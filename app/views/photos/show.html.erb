@@ -1,14 +1,13 @@
 <h1>photo詳細画面</h1>
 <p>内容: <%= @photo.content %></p>
-<p>画像: <%= @photo.image.url %></p>
 <p>名前: <%= @photo.user.name %></p>
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong>
- <%= image_tag @photo.image.url %>
-</p>
+
+  <div>写真</div>
+<p><%= image_tag @photo.image.url %></p>
+
 
 <% unless @photo.user_id == current_user.id %>
   <% if @favorite.present? %>

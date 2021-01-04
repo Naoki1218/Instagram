@@ -1,0 +1,11 @@
+  <% @favorite_photos.each do |favorite_photo| %>
+    <div>
+      <%= favorite_photo.user.name %>
+    </div>
+    <div>
+      <%= image_tag favorite_photo.image.url,size: '200x200' %>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to '戻る', user_path %>
+  </div>
