@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root  'users#new'
   resources :sessions, only: [:new, :create, :destroy]
   resources :favorites, only: [:create, :destroy]
-  resources :photos, only: [:index,:new,:create,:edit,:update,:destroy] do
+  resources :photos do
     collection do
       post :confirm
     end
