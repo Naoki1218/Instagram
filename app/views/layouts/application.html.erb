@@ -16,11 +16,11 @@
     <% end %>
     <header class="header">Instagram</header>
     <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+      <%= link_to "Profile", user_path(current_user.id), class: "btn btn-outline-primary" %>
+      <%= link_to "Logout", session_path(current_user.id), class: "btn btn-outline-danger", method: :delete %>
     <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
+      <%= link_to "Sign up", new_user_path, class: "btn btn-outline-warning" %>
+      <%= link_to "Login", new_session_path, class: "btn btn-outline-primary" %>
     <% end %>
     <%= yield %>
   </body>

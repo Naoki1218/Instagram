@@ -11,10 +11,10 @@
 
 <% unless @photo.user_id == current_user.id %>
 <% if @favorite.present? %>
-<%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+<%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger btn-lg' %>
 <% else %>
-<%= link_to 'お気に入りする', favorites_path(photo_id: @photo.id), method: :post, class: 'btn btn-primary' %>
+<%= link_to 'お気に入りする', favorites_path(photo_id: @photo.id), method: :post, class: 'btn btn-primary btn-lg' %>
 <% end %>
 <% end %>
 
-<%= link_to 'Photoページへ', photos_path %>
+<%= link_to 'Photoページへ', photos_path, class: "btn btn-dark btn-lg" %>

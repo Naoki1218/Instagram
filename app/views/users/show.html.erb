@@ -6,7 +6,7 @@
 <% end %>
 
 <div>
-  <%= link_to 'Photoページへ', photos_path %>
-  <%= link_to "Profileを編集する", edit_user_path(@user.id) %>
-  <%= link_to "favoriteページへ", favorites_user_path(@user.id) %>
+  <%= link_to 'Photoページへ', photos_path, class: "btn btn-dark btn-lg" %>
+  <%= link_to "Profileを編集する", edit_user_path(@user.id), class: "btn btn-warning btn-lg" %>
+  <%= link_to "favoriteページへ", favorites_user_path(@user.id), class: "btn btn-dark btn-lg" %>
 </div>
