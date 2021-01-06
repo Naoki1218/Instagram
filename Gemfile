@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.11'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'letter_opener_web'
+
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
@@ -27,7 +29,6 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'letter_opener_web'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
