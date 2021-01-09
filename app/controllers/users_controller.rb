@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :favorites ]
-  # before_action :autheniticate_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :update, :favorites]
+  before_action :only_your_page, only: [:edit, :show]
 
   def new
     @user = User.new
@@ -17,14 +17,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    # if @user == current_user
+    # else
+    #   redirect_to photos_path, notice: "他者のページアクセスできません"
+    # end
   end
 
   def show
     @user = User.find(params[:id])
-    unless @user.id == current_user.id
-      redirect_to user_path(current_user.id)
-    end
+    # if @user == current_user
+    # else
+    #   redirect_to photos_path, notice: "他者のページアクセスできません"
+    # end
   end
 
   def update
@@ -48,6 +53,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-      :password_confirmation, :image, :image_cache, :profile)
+    :password_confirmation, :image, :image_cache, :profile)
+  end
+
+  def only_your_page
+    if @user == current_user
+    else
+      redirect_to photos_path, notice: "他者のページアクセスできません"
     end
   end
+end
